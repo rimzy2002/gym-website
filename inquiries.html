@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inquiries|page</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+     <nav class="navbar">
+    <!-- logo section -->
+     <div class="logo">
+        <a href="index.html">
+            <img src="./images/logo.webp" alt="logo">
+        </a>
+     </div>
+     <!-- Navigation section  -->
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inquiries.html">inquer</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+   </nav>
+    <form class="inquiries">
+        <input type="text" placeholder="Enter your Name">
+        <input type="email" placeholder="Enter your Email">
+        <input type="number" placeholder="Enter your phone">
+        <input type="text" placeholder="Enter your message">
+        
+        <select name="inquiry-type">
+            <option value="">Select the Inquiries type</option>
+            <option value="membership">Membership</option>
+            <option value="services">Services details</option>
+            <option value="website">Online website problem</option>
+            <option value="others">Others</option>
+        </select>
+
+        <label for="screenshot">Upload your screenshot or images</label>
+        <input type="file" id="screenshot" name="screenshot" accept="image/*" class="file-input">
+        
+        <button class="btn" type="submit">Submit</button>
+    </form>
+</body>
+</html>

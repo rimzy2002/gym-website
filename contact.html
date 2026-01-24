@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inquiries|page</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+     <nav class="navbar">
+    <!-- logo section -->
+     <div class="logo">
+        <a href="index.html">
+            <img src="./images/logo.webp" alt="logo">
+        </a>
+     </div>
+     <!-- Navigation section  -->
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="inquiries.html">inquer</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+   </nav>
+    <form class="inquiries">
+        <input type="text" placeholder="Enter your Name">
+        <input type="email" placeholder="Enter your Email">
+        <input type="number" placeholder="Enter your phone">
+        <input type="text" placeholder="Enter your message">
+        
+        <select name="contact-option">
+            <option value="">Select the contact option</option>
+            <option value="personal-training">Personal Training</option>
+            <option value="group-classes">Group Classes</option>
+            <option value="nutrition">Nutrition Counseling</option>
+            <option value="membership">Membership</option>
+            <option value="services">Services details</option>
+            <option value="website">Online website problem</option>
+            <option value="others">Others</option>
+        </select>
+
+        <label for="screenshot">Upload your screenshot or images</label>
+        <input type="file" id="screenshot" name="screenshot" accept="image/*" class="file-input">
+        
+        <button class="btn" type="submit">Submit</button>
+    </form>
+<br><br>
+    <div class="contact-container">
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <div class="info-item">
+                <p>No. 45, Galle Road, Colombo 03, Sri Lanka</p>
+            </div>
+            <div class="info-item">
+                <p>+94 77 123 4567</p>
+            </div>
+            <div class="info-item">
+                <p>info@healthhaven.com</p>
+            </div>
+            <div class="info-item">
+                <p>Mon - Fri: 6AM - 10PM<br>Sat - Sun: 8AM - 8PM</p>
+            </div>
+            
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>
