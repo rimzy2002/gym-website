@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUSPENDED - Ultimate Fitness Zone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --primary: #ff4d4d;
+      --primary-dark: #e63946;
+      --dark: #0a0a0a;
+      --dark-light: #1a1a2e;
+      --gold: #f0a500;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: rgba(10, 10, 10, 0.95) !important;
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(255, 77, 77, 0.1);
+    }
+
+    .navbar.scrolled {
+      padding: 8px 0;
+      box-shadow: 0 2px 20px rgba(255, 77, 77, 0.2);
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-link {
+      color: #ccc !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      margin: 0 8px;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary) !important;
+    }
+
+    .nav-link:hover::after {
+      width: 70%;
+    }
+
+    .btn-join {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff !important;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+    }
+
+    .btn-join:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 77, 77, 0.5);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.85), rgba(26, 26, 46, 0.9)),
+        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 150px;
+      background: linear-gradient(to top, var(--dark), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 77, 77, 0.15);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #aaa;
+      max-width: 500px;
+      margin-top: 20px;
+      line-height: 1.8;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+      animation: fadeInUp 1.4s ease;
+    }
+
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border: none;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(255, 77, 77, 0.4);
+    }
+
+    .btn-hero-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(255, 77, 77, 0.6);
+      color: #fff;
+    }
+
+    .btn-hero-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 13px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      margin-left: 15px;
+    }
+
+    .btn-hero-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(255, 77, 77, 0.1);
+    }
+
+    .hero-stats {
+      margin-top: 60px;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0 20px;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 5px;
+    }
+
+    /* ===== SECTION STYLING ===== */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header .sub-title {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .section-header h2 span {
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-header p {
+      color: #888;
+      max-width: 600px;
+      margin: 15px auto 0;
+      font-size: 1.05rem;
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    #about {
+      background: var(--dark);
+    }
+
+    .about-img-wrapper {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .about-img-wrapper img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.5s;
+    }
+
+    .about-img-wrapper:hover img {
+      transform: scale(1.05);
+    }
+
+    .experience-badge {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 20px 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .experience-badge .number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      display: block;
+    }
+
+    .experience-badge .text {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .about-feature .icon-box {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 77, 77, 0.1);
+      border: 1px solid rgba(255, 77, 77, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    .about-feature h5 {
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .about-feature p {
+      color: #888;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* ===== CLASSES / PROGRAMS SECTION ===== */
+    #classes {
+      background: var(--dark-light);
+    }
+
+    .class-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 380px;
+      cursor: pointer;
+      transition: transform 0.4s;
+    }
+
+    .class-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .class-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .class-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .class-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 10%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      transition: background 0.3s;
+    }
+
+    .class-card:hover .class-overlay {
+      background: linear-gradient(to top, rgba(255, 77, 77, 0.85) 0%, rgba(10, 10, 10, 0.7) 100%);
+    }
+
+    .class-overlay .class-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .class-overlay h4 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .class-overlay p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 5px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s;
+    }
+
+    .class-card:hover .class-overlay p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== TRAINERS SECTION ===== */
+    #trainers {
+      background: var(--dark);
+    }
+
+    .trainer-card {
+      background: var(--dark-light);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s;
+    }
+
+    .trainer-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 77, 77, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .trainer-img {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+
+    .trainer-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .trainer-card:hover .trainer-img img {
+      transform: scale(1.1);
+    }
+
+    .trainer-social {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      transition: bottom 0.4s;
+    }
+
+    .trainer-card:hover .trainer-social {
+      bottom: 20px;
+    }
+
+    .trainer-social a {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .trainer-social a:hover {
+      background: var(--gold);
+      transform: translateY(-3px);
+    }
+
+    .trainer-info {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .trainer-info h5 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .trainer-info .role {
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ===== PRICING SECTION ===== */
+    #pricing {
+      background: var(--dark-light);
+    }
+
+    .pricing-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .pricing-card:hover::before,
+    .pricing-card.featured::before {
+      transform: scaleX(1);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 77, 77, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary);
+      background: rgba(255, 77, 77, 0.05);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 20px;
+      right: -30px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 5px 40px;
+      transform: rotate(45deg);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .pricing-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(255, 77, 77, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .pricing-card h4 {
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 1.1rem;
+    }
+
+    .pricing-amount {
+      margin: 25px 0;
+    }
+
+    .pricing-amount .currency {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      vertical-align: top;
+    }
+
+    .pricing-amount .price {
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #ccc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+
+    .pricing-amount .period {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 25px 0;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      color: #aaa;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95rem;
+    }
+
+    .pricing-features li i {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    .pricing-features li.disabled {
+      color: #444;
+      text-decoration: line-through;
+    }
+
+    .pricing-features li.disabled i {
+      color: #444;
+    }
+
+    .btn-pricing {
+      width: 100%;
+      padding: 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .btn-pricing-outline {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+
+    .btn-pricing-outline:hover {
+      border-color: var(--primary);
+      background: rgba(255, 77, 77, 0.1);
+      color: var(--primary);
+    }
+
+    .btn-pricing-filled {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(255, 77, 77, 0.3);
+    }
+
+    .btn-pricing-filled:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255, 77, 77, 0.5);
+      color: #fff;
+    }
+
+    /* ===== SCHEDULE SECTION ===== */
+    #schedule {
+      background: var(--dark);
+    }
+
+    .schedule-table {
+      background: var(--dark-light);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .schedule-table .table {
+      margin: 0;
+      color: #ccc;
+    }
+
+    .schedule-table .table thead th {
+      background: rgba(255, 77, 77, 0.1);
+      border: none;
+      padding: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .schedule-table .table td {
+      padding: 18px;
+      border-color: rgba(255, 255, 255, 0.05);
+      text-align: center;
+      vertical-align: middle;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .schedule-table .table tbody tr:hover td {
+      background: rgba(255, 77, 77, 0.05);
+    }
+
+    .schedule-class {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .schedule-trainer {
+      font-size: 0.75rem;
+      color: #666;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials {
+      background: var(--dark-light);
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 35px;
+      transition: all 0.4s;
+      height: 100%;
+    }
+
+    .testimonial-card:hover {
+      border-color: rgba(255, 77, 77, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .testimonial-card .stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-card .quote {
+      color: #aaa;
+      font-style: italic;
+      line-height: 1.8;
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .testimonial-author img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+
+    .testimonial-author h6 {
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .testimonial-author small {
+      color: var(--primary);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== CONTACT / CTA SECTION ===== */
+    #contact {
+      background: var(--dark-light);
+    }
+
+    .contact-info-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.4s;
+      height: 100%;
+    }
+
+    .contact-info-card:hover {
+      border-color: rgba(255, 77, 77, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .contact-info-card .icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 77, 77, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    .contact-info-card h6 {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-info-card p {
+      color: #888;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .contact-form .form-control {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 12px;
+    }
+
+    .contact-form .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: none;
+    }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+    }
+
+    .cta-banner h2 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-banner p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin: 15px 0 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-cta {
+      background: #fff;
+      color: var(--primary);
+      padding: 15px 45px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border: none;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      padding: 60px 0 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-desc {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-top: 15px;
+    }
+
+    footer h6 {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li a {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      display: block;
+      padding: 5px 0;
+    }
+
+    .footer-links li a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      text-decoration: none;
+      margin-right: 8px;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 20px 0;
+      margin-top: 40px;
+      text-align: center;
+      color: #444;
+      font-size: 0.85rem;
+    }
+
+    /* ===== 3D SCROLL-REVEAL ANIMATIONS (Apple-style) ===== */
+    .reveal {
+      opacity: 0;
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
+    }
+
+    .reveal.active {
+      opacity: 1;
+    }
+
+    .reveal-up {
+      transform: translate3d(0, 80px, 0);
+    }
+
+    .reveal-up.active {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .reveal-down {
+      transform: translate3d(0, -60px, 0);
+    }
+
+    .reveal-down.active {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .reveal-left {
+      transform: translate3d(-100px, 0, 0);
+    }
+
+    .reveal-left.active {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .reveal-right {
+      transform: translate3d(100px, 0, 0);
+    }
+
+    .reveal-right.active {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .reveal-scale {
+      transform: scale3d(0.8, 0.8, 1);
+    }
+
+    .reveal-scale.active {
+      transform: scale3d(1, 1, 1);
+    }
+
+    .reveal-rotate {
+      transform: perspective(1000px) rotateY(15deg) translateX(50px);
+    }
+
+    .reveal-rotate.active {
+      transform: perspective(1000px) rotateY(0deg) translateX(0);
+    }
+
+    .reveal-rotate-left {
+      transform: perspective(1000px) rotateY(-15deg) translateX(-50px);
+    }
+
+    .reveal-rotate-left.active {
+      transform: perspective(1000px) rotateY(0deg) translateX(0);
+    }
+
+    .reveal-flip {
+      transform: perspective(800px) rotateX(20deg) translateY(40px);
+      transform-origin: center bottom;
+    }
+
+    .reveal-flip.active {
+      transform: perspective(800px) rotateX(0deg) translateY(0);
+    }
+
+    .reveal-zoom {
+      transform: scale3d(0.3, 0.3, 1);
+      filter: blur(10px);
+    }
+
+    .reveal-zoom.active {
+      transform: scale3d(1, 1, 1);
+      filter: blur(0);
+    }
+
+    /* Stagger delays for child elements */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+    .stagger-6 { transition-delay: 0.6s; }
+
+    /* ===== 3D CARD TILT EFFECT ===== */
+    .tilt-card {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .tilt-card .tilt-inner {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+    }
+
+    .tilt-card .tilt-shine {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+      background: radial-gradient(
+        600px circle at var(--shine-x, 50%) var(--shine-y, 50%),
+        rgba(255, 77, 77, 0.15),
+        transparent 40%
+      );
+      z-index: 2;
+    }
+
+    .tilt-card:hover .tilt-shine {
+      opacity: 1;
+    }
+
+    /* ===== 3D FLOATING / PARALLAX ELEMENTS ===== */
+    .float-element {
+      animation: floatAnim 6s ease-in-out infinite;
+    }
+
+    .float-element-delayed {
+      animation: floatAnim 6s ease-in-out 2s infinite;
+    }
+
+    @keyframes floatAnim {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -20px, 0); }
+    }
+
+    /* Hero parallax depth */
+    .hero {
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .hero-content {
+      transform: translateZ(50px);
+    }
+
+    /* ===== TEXT REVEAL (word-by-word Apple style) ===== */
+    .text-reveal-line {
+      overflow: hidden;
+      display: block;
+    }
+
+    .text-reveal-line span {
+      display: inline-block;
+      transform: translateY(110%);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .text-reveal-line.active span {
+      transform: translateY(0);
+    }
+
+    /* ===== COUNTER ANIMATION ===== */
+    .counter-value {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    /* ===== SECTION PARALLAX DEPTH ===== */
+    .parallax-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 77, 77, 0.06), transparent 70%);
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .shape-1 {
+      width: 600px;
+      height: 600px;
+      top: -200px;
+      right: -200px;
+    }
+
+    .shape-2 {
+      width: 400px;
+      height: 400px;
+      bottom: -150px;
+      left: -100px;
+    }
+
+    .shape-3 {
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.04), transparent 70%);
+    }
+
+    /* ===== 3D HOVER ON CLASS CARDS ===== */
+    .class-card {
+      transform-style: preserve-3d;
+      perspective: 800px;
+    }
+
+    .class-card .class-overlay {
+      transform: translateZ(30px);
+      transform-style: preserve-3d;
+    }
+
+    /* ===== GLOWING BORDER EFFECT ON SCROLL ===== */
+    .glow-border {
+      position: relative;
+    }
+
+    .glow-border::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      background: conic-gradient(
+        from var(--glow-angle, 0deg),
+        transparent 0%,
+        var(--primary) 10%,
+        transparent 20%
+      );
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .glow-border:hover::after {
+      opacity: 1;
+      animation: glowSpin 3s linear infinite;
+    }
+
+    @keyframes glowSpin {
+      to { --glow-angle: 360deg; }
+    }
+
+    @property --glow-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
+    /* ===== SMOOTH SECTION TRANSITIONS ===== */
+    .section-fade {
+      position: relative;
+    }
+
+    .section-fade::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100px;
+      background: linear-gradient(to bottom, var(--dark), transparent);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ===== PRICING 3D FLIP ENTRANCE ===== */
+    .pricing-card {
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    /* ===== PARALLAX MOUSE MOVEMENT FOR HERO ===== */
+    .hero-parallax-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      will-change: transform;
+    }
+
+    .hero-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--primary);
+      opacity: 0.15;
+    }
+
+    .hero-particle:nth-child(1) {
+      width: 6px; height: 6px;
+      top: 20%; left: 60%;
+    }
+
+    .hero-particle:nth-child(2) {
+      width: 4px; height: 4px;
+      top: 40%; left: 75%;
+      background: var(--gold);
+    }
+
+    .hero-particle:nth-child(3) {
+      width: 8px; height: 8px;
+      top: 70%; left: 65%;
+    }
+
+    .hero-particle:nth-child(4) {
+      width: 5px; height: 5px;
+      top: 30%; left: 85%;
+      background: var(--gold);
+    }
+
+    .hero-particle:nth-child(5) {
+      width: 3px; height: 3px;
+      top: 60%; left: 80%;
+    }
+
+    .hero-particle:nth-child(6) {
+      width: 7px; height: 7px;
+      top: 15%; left: 70%;
+      background: var(--gold);
+      opacity: 0.1;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 99;
+      border: none;
+      box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+      transition: all 0.3s;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 77, 77, 0.5);
+    }
+
+    .scroll-top.show {
+      display: flex;
+    }
+
+    /* ===== AUTH MODALS ===== */
+    #loginModal .form-control:focus,
+    #registerModal .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    #loginModal .form-control::placeholder,
+    #registerModal .form-control::placeholder {
+      color: #555;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(255, 77, 77, 0.1) !important;
+    }
+
+    .toast {
+      border-width: 2px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 991px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .section-header h2 {
+        font-size: 2.2rem;
+      }
+
+      .cta-banner h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .btn-hero-outline {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      .stat-item {
+        border-right: none;
+        margin-bottom: 20px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .schedule-table {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== TOAST NOTIFICATIONS ===== -->
+  <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+    <div id="appToast" class="toast" role="alert">
+      <div class="toast-header bg-dark text-white">
+        <strong class="me-auto" id="toastTitle">Notification</strong>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+      </div>
+      <div class="toast-body" id="toastBody" style="background: var(--dark-light); color: #ccc;"></div>
+    </div>
+  </div>
+
+  <!-- ===== LOGIN MODAL ===== -->
+  <div class="modal fade" id="loginModal" tabindex="-1" data-bs-theme="dark">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background: var(--dark-light); border: 1px solid rgba(255,255,255,0.1);">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Login to Your Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <input type="email" class="form-control" id="loginEmail" placeholder="Email Address"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:14px 20px;border-radius:12px;">
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:14px 20px;border-radius:12px;">
+          </div>
+          <button class="btn btn-hero-primary w-100" onclick="loginUser()">Login</button>
+          <p class="text-center mt-3 text-secondary">Don't have an account?
+            <a href="#" class="text-decoration-none" style="color:var(--primary);"
+              onclick="switchToRegister(event)">Register here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REGISTER MODAL ===== -->
+  <div class="modal fade" id="registerModal" tabindex="-1" data-bs-theme="dark">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background: var(--dark-light); border: 1px solid rgba(255,255,255,0.1);">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Create Your Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="registerName" placeholder="Full Name"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:14px 20px;border-radius:12px;">
+          </div>
+          <div class="mb-3">
+            <input type="email" class="form-control" id="registerEmail" placeholder="Email Address"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:14px 20px;border-radius:12px;">
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" id="registerPassword" placeholder="Password (min 6 chars)"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:14px 20px;border-radius:12px;">
+          </div>
+          <div class="mb-3">
+            <input type="tel" class="form-control" id="registerPhone" placeholder="Phone (optional)"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;padding:14px 20px;border-radius:12px;">
+          </div>
+          <button class="btn btn-hero-primary w-100" onclick="registerUser()">Create Account</button>
+          <p class="text-center mt-3 text-secondary">Already have an account?
+            <a href="#" class="text-decoration-none" style="color:var(--primary);"
+              onclick="switchToLogin(event)">Login here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">SUSPENDED</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#classes">Classes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#trainers">Trainers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <!-- Shown when NOT logged in -->
+          <li class="nav-item ms-lg-3" id="navAuthGuest">
+            <a class="btn btn-join" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+              <i class="bi bi-person-circle me-1"></i> Login
+            </a>
+          </li>
+          <!-- Shown when logged in -->
+          <li class="nav-item ms-lg-3 dropdown d-none" id="navAuthUser">
+            <a class="btn btn-join dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-person-check-fill me-1"></i> <span id="navUserName">User</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" style="background:var(--dark-light);border:1px solid rgba(255,255,255,0.1);">
+              <li><a class="dropdown-item text-light" href="#" id="navMembershipStatus">
+                <i class="bi bi-award me-2"></i>My Membership</a></li>
+              <li><hr class="dropdown-divider" style="border-color:rgba(255,255,255,0.1);"></li>
+              <li><a class="dropdown-item text-danger" href="#" onclick="logoutUser()">
+                <i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="hero">
+    <!-- Parallax floating particles -->
+    <div class="hero-parallax-layer" id="heroParallax">
+      <div class="hero-particle float-element"></div>
+      <div class="hero-particle float-element-delayed"></div>
+      <div class="hero-particle float-element"></div>
+      <div class="hero-particle float-element-delayed"></div>
+      <div class="hero-particle float-element"></div>
+      <div class="hero-particle float-element-delayed"></div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 hero-content">
+          <div class="hero-badge">No. 1 Fitness Center</div>
+          <h1>Build Your<br><span>Perfect Body</span><br>With Us</h1>
+          <p>Transform your body and mind with our world-class training programs, expert coaches,
+            and state-of-the-art equipment. Your fitness journey starts here.</p>
+          <div class="hero-buttons">
+            <a href="#pricing" class="btn btn-hero-primary">Get Started</a>
+            <a href="#classes" class="btn btn-hero-outline"><i class="bi bi-play-circle me-2"></i>Our Programs</a>
+          </div>
+          <div class="hero-stats">
+            <div class="row">
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number"><span class="counter-value" data-target="15">0</span>K+</div>
+                  <div class="stat-label">Active Members</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number"><span class="counter-value" data-target="50">0</span>+</div>
+                  <div class="stat-label">Expert Trainers</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="stat-item">
+                  <div class="stat-number"><span class="counter-value" data-target="120">0</span>+</div>
+                  <div class="stat-label">Programs</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="parallax-section">
+    <div class="parallax-bg-shape shape-1"></div>
+    <div class="parallax-bg-shape shape-2"></div>
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="about-img-wrapper reveal reveal-rotate-left">
+            <img
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80"
+              alt="Gym Training">
+            <div class="experience-badge float-element">
+              <span class="number">12+</span>
+              <span class="text">Years Experience</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="section-header text-start reveal reveal-right">
+            <div class="sub-title">About Us</div>
+            <h2>We Are <span>SUSPENDED</span></h2>
+            <div class="divider" style="margin-left:0;"></div>
+          </div>
+          <p class="text-secondary mb-4 reveal reveal-up stagger-1">
+            We provide the best fitness experience with cutting-edge equipment, certified trainers,
+            and a supportive community to help you crush every goal.
+          </p>
+          <div class="about-feature reveal reveal-up stagger-2">
+            <div class="icon-box"><i class="bi bi-lightning-charge-fill"></i></div>
+            <div>
+              <h5>Modern Equipment</h5>
+              <p>Latest machines and free weights from top brands.</p>
+            </div>
+          </div>
+          <div class="about-feature reveal reveal-up stagger-3">
+            <div class="icon-box"><i class="bi bi-person-check-fill"></i></div>
+            <div>
+              <h5>Certified Trainers</h5>
+              <p>Expert coaches with international certifications.</p>
+            </div>
+          </div>
+          <div class="about-feature reveal reveal-up stagger-4">
+            <div class="icon-box"><i class="bi bi-heart-pulse-fill"></i></div>
+            <div>
+              <h5>Nutrition Guidance</h5>
+              <p>Personalized meal plans to fuel your workouts.</p>
+            </div>
+          </div>
+          <a href="#classes" class="btn btn-hero-primary mt-3 reveal reveal-up stagger-5">Explore Programs <i
+              class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLASSES SECTION ===== -->
+  <section id="classes" class="parallax-section">
+    <div class="parallax-bg-shape shape-3"></div>
+    <div class="container">
+      <div class="section-header reveal reveal-zoom">
+        <div class="sub-title">Our Programs</div>
+        <h2>Featured <span>Classes</span></h2>
+        <div class="divider"></div>
+        <p>Choose from a wide variety of workout programs designed for all fitness levels.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="class-card tilt-card reveal reveal-flip stagger-1">
+            <div class="tilt-shine"></div>
+            <img
+              src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=600&q=80"
+              alt="Weight Training">
+            <div class="class-overlay">
+              <div class="class-tag">Strength</div>
+              <h4>Weight Training</h4>
+              <p>Build raw strength with progressive overload programs designed by experts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="class-card tilt-card reveal reveal-flip stagger-2">
+            <div class="tilt-shine"></div>
+            <img
+              src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80"
+              alt="Cardio Blast">
+            <div class="class-overlay">
+              <div class="class-tag">Cardio</div>
+              <h4>Cardio Blast</h4>
+              <p>High-intensity cardio sessions to burn fat and boost endurance fast.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="class-card tilt-card reveal reveal-flip stagger-3">
+            <div class="tilt-shine"></div>
+            <img
+              src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=600&q=80"
+              alt="Yoga Flow">
+            <div class="class-overlay">
+              <div class="class-tag">Flexibility</div>
+              <h4>Yoga & Stretch</h4>
+              <p>Improve flexibility, balance and mental clarity through guided yoga.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="class-card tilt-card reveal reveal-flip stagger-4">
+            <div class="tilt-shine"></div>
+            <img
+              src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=600&q=80"
+              alt="CrossFit">
+            <div class="class-overlay">
+              <div class="class-tag">HIIT</div>
+              <h4>CrossFit</h4>
+              <p>Functional fitness combining strength, speed, and endurance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="class-card tilt-card reveal reveal-flip stagger-5">
+            <div class="tilt-shine"></div>
+            <img
+              src="https://images.unsplash.com/photo-1615117972428-28de87e67975?w=600&q=80"
+              alt="Boxing">
+            <div class="class-overlay">
+              <div class="class-tag">Combat</div>
+              <h4>Boxing</h4>
+              <p>Learn striking techniques while getting an incredible full-body workout.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="class-card tilt-card reveal reveal-flip stagger-6">
+            <div class="tilt-shine"></div>
+            <img
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
+              alt="Personal Training">
+            <div class="class-overlay">
+              <div class="class-tag">1-on-1</div>
+              <h4>Personal Training</h4>
+              <p>Dedicated coaching tailored to your unique fitness goals.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRAINERS SECTION ===== -->
+  <section id="trainers" class="parallax-section">
+    <div class="parallax-bg-shape shape-2"></div>
+    <div class="container">
+      <div class="section-header reveal reveal-up">
+        <div class="sub-title">Expert Team</div>
+        <h2>Meet Our <span>Trainers</span></h2>
+        <div class="divider"></div>
+        <p>Our certified professionals are dedicated to helping you achieve your goals.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="trainer-card tilt-card reveal reveal-scale stagger-1">
+            <div class="tilt-shine"></div>
+            <div class="trainer-img">
+              <img
+                src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80"
+                alt="Trainer 1">
+              <div class="trainer-social">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="trainer-info">
+              <h5>Mike Johnson</h5>
+              <div class="role">Strength Coach</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="trainer-card tilt-card reveal reveal-scale stagger-2">
+            <div class="tilt-shine"></div>
+            <div class="trainer-img">
+              <img
+                src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400&q=80"
+                alt="Trainer 2">
+              <div class="trainer-social">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="trainer-info">
+              <h5>Sarah Williams</h5>
+              <div class="role">Yoga Instructor</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="trainer-card tilt-card reveal reveal-scale stagger-3">
+            <div class="tilt-shine"></div>
+            <div class="trainer-img">
+              <img
+                src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80"
+                alt="Trainer 3">
+              <div class="trainer-social">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="trainer-info">
+              <h5>David Martinez</h5>
+              <div class="role">CrossFit Trainer</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="trainer-card tilt-card reveal reveal-scale stagger-4">
+            <div class="tilt-shine"></div>
+            <div class="trainer-img">
+              <img
+                src="https://images.unsplash.com/photo-1606902965551-dce093cda6e7?w=400&q=80"
+                alt="Trainer 4">
+              <div class="trainer-social">
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-twitter-x"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+            <div class="trainer-info">
+              <h5>Emma Thompson</h5>
+              <div class="role">Boxing Coach</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING SECTION ===== -->
+  <section id="pricing" class="parallax-section">
+    <div class="parallax-bg-shape shape-1"></div>
+    <div class="parallax-bg-shape shape-3"></div>
+    <div class="container">
+      <div class="section-header reveal reveal-up">
+        <div class="sub-title">Membership Plans</div>
+        <h2>Choose Your <span>Plan</span></h2>
+        <div class="divider"></div>
+        <p>Flexible pricing plans to fit your lifestyle and fitness goals.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6">
+          <div class="pricing-card tilt-card reveal reveal-left stagger-1">
+            <div class="tilt-shine"></div>
+            <div class="pricing-icon"><i class="bi bi-person"></i></div>
+            <h4>Starter</h4>
+            <div class="pricing-amount">
+              <span class="currency">$</span>
+              <span class="price">29</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="bi bi-check-circle-fill"></i> Gym Access (6AM - 10PM)</li>
+              <li><i class="bi bi-check-circle-fill"></i> Basic Equipment</li>
+              <li><i class="bi bi-check-circle-fill"></i> Locker Room Access</li>
+              <li class="disabled"><i class="bi bi-x-circle-fill"></i> Group Classes</li>
+              <li class="disabled"><i class="bi bi-x-circle-fill"></i> Personal Trainer</li>
+              <li class="disabled"><i class="bi bi-x-circle-fill"></i> Nutrition Plan</li>
+            </ul>
+            <a href="#" class="btn btn-pricing btn-pricing-outline" onclick="choosePlan('Starter')">Choose Plan</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="pricing-card featured tilt-card reveal reveal-scale stagger-2">
+            <div class="tilt-shine"></div>
+            <div class="pricing-badge">Popular</div>
+            <div class="pricing-icon"><i class="bi bi-star-fill"></i></div>
+            <h4>Pro</h4>
+            <div class="pricing-amount">
+              <span class="currency">$</span>
+              <span class="price">59</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="bi bi-check-circle-fill"></i> 24/7 Gym Access</li>
+              <li><i class="bi bi-check-circle-fill"></i> All Equipment</li>
+              <li><i class="bi bi-check-circle-fill"></i> Locker + Shower</li>
+              <li><i class="bi bi-check-circle-fill"></i> All Group Classes</li>
+              <li><i class="bi bi-check-circle-fill"></i> 2 PT Sessions/Month</li>
+              <li class="disabled"><i class="bi bi-x-circle-fill"></i> Nutrition Plan</li>
+            </ul>
+            <a href="#" class="btn btn-pricing btn-pricing-filled" onclick="choosePlan('Pro')">Choose Plan</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="pricing-card tilt-card reveal reveal-right stagger-3">
+            <div class="tilt-shine"></div>
+            <div class="pricing-icon"><i class="bi bi-trophy-fill"></i></div>
+            <h4>Elite</h4>
+            <div class="pricing-amount">
+              <span class="currency">$</span>
+              <span class="price">99</span>
+              <span class="period">/month</span>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="bi bi-check-circle-fill"></i> 24/7 VIP Access</li>
+              <li><i class="bi bi-check-circle-fill"></i> Premium Equipment</li>
+              <li><i class="bi bi-check-circle-fill"></i> Private Locker + Sauna</li>
+              <li><i class="bi bi-check-circle-fill"></i> Unlimited Classes</li>
+              <li><i class="bi bi-check-circle-fill"></i> Unlimited PT Sessions</li>
+              <li><i class="bi bi-check-circle-fill"></i> Custom Nutrition Plan</li>
+            </ul>
+            <a href="#" class="btn btn-pricing btn-pricing-outline" onclick="choosePlan('Elite')">Choose Plan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCHEDULE SECTION ===== -->
+  <section id="schedule">
+    <div class="container">
+      <div class="section-header reveal reveal-down">
+        <div class="sub-title">Timetable</div>
+        <h2>Weekly <span>Schedule</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="schedule-table reveal reveal-up">
+        <div class="table-responsive">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="schedule-class">6:00 AM</td>
+                <td>
+                  <div class="schedule-class">Yoga Flow</div>
+                  <div class="schedule-trainer">Sarah W.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">HIIT Burn</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Yoga Flow</div>
+                  <div class="schedule-trainer">Sarah W.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">HIIT Burn</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Yoga Flow</div>
+                  <div class="schedule-trainer">Sarah W.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Stretch</div>
+                  <div class="schedule-trainer">Sarah W.</div>
+                </td>
+              </tr>
+              <tr>
+                <td class="schedule-class">9:00 AM</td>
+                <td>
+                  <div class="schedule-class">Weight Training</div>
+                  <div class="schedule-trainer">Mike J.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">CrossFit</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Weight Training</div>
+                  <div class="schedule-trainer">Mike J.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">CrossFit</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Weight Training</div>
+                  <div class="schedule-trainer">Mike J.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">CrossFit</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+              </tr>
+              <tr>
+                <td class="schedule-class">12:00 PM</td>
+                <td>
+                  <div class="schedule-class">Boxing</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Cardio Blast</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Boxing</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Cardio Blast</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Boxing</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Open Gym</div>
+                  <div class="schedule-trainer">All Staff</div>
+                </td>
+              </tr>
+              <tr>
+                <td class="schedule-class">5:00 PM</td>
+                <td>
+                  <div class="schedule-class">CrossFit</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Weight Training</div>
+                  <div class="schedule-trainer">Mike J.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">CrossFit</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Weight Training</div>
+                  <div class="schedule-trainer">Mike J.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">CrossFit</div>
+                  <div class="schedule-trainer">David M.</div>
+                </td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td class="schedule-class">7:00 PM</td>
+                <td>
+                  <div class="schedule-class">Cardio Blast</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Boxing</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Cardio Blast</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Boxing</div>
+                  <div class="schedule-trainer">Emma T.</div>
+                </td>
+                <td>
+                  <div class="schedule-class">Open Gym</div>
+                  <div class="schedule-trainer">All Staff</div>
+                </td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS SECTION ===== -->
+  <section id="testimonials" class="parallax-section">
+    <div class="parallax-bg-shape shape-1"></div>
+    <div class="container">
+      <div class="section-header reveal reveal-zoom">
+        <div class="sub-title">Success Stories</div>
+        <h2>What Our <span>Members Say</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="testimonial-card tilt-card reveal reveal-rotate stagger-1">
+            <div class="tilt-shine"></div>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="quote">"SUSPENDED completely transformed my lifestyle. I lost 30 lbs in 4 months and
+              gained confidence I never knew I had. The trainers are phenomenal!"</p>
+            <div class="testimonial-author">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80"
+                alt="Member">
+              <div>
+                <h6>Lisa Rodriguez</h6>
+                <small>Member for 2 Years</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="testimonial-card tilt-card reveal reveal-rotate stagger-2">
+            <div class="tilt-shine"></div>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="quote">"The CrossFit classes pushed me beyond my limits. I've competed in 3
+              competitions now and podiumed in 2. This gym breeds champions!"</p>
+            <div class="testimonial-author">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
+                alt="Member">
+              <div>
+                <h6>James Parker</h6>
+                <small>Member for 3 Years</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="testimonial-card tilt-card reveal reveal-rotate stagger-3">
+            <div class="tilt-shine"></div>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-half"></i>
+            </div>
+            <p class="quote">"Best gym I've ever been to. The community is incredible, equipment is top-notch,
+              and the personal training sessions are worth every penny."</p>
+            <div class="testimonial-author">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
+                alt="Member">
+              <div>
+                <h6>Amy Chen</h6>
+                <small>Member for 1 Year</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <div class="cta-banner reveal reveal-zoom">
+    <div class="container">
+      <h2>Ready to Start Your<br>Fitness Journey?</h2>
+      <p>Join thousands of members who've already transformed their lives.</p>
+      <a href="#pricing" class="btn btn-cta">Join Now - Start Free Trial</a>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact" class="parallax-section">
+    <div class="parallax-bg-shape shape-2"></div>
+    <div class="container">
+      <div class="section-header reveal reveal-up">
+        <div class="sub-title">Get In Touch</div>
+        <h2>Contact <span>Us</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="row g-4 mb-5">
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-info-card reveal reveal-flip stagger-1">
+            <div class="icon"><i class="bi bi-geo-alt-fill"></i></div>
+            <h6>Our Location</h6>
+            <p>123 Fitness Avenue, Suite 100<br>New York, NY 10001</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-info-card reveal reveal-flip stagger-2">
+            <div class="icon"><i class="bi bi-telephone-fill"></i></div>
+            <h6>Phone Number</h6>
+            <p>+1 (555) 123-4567<br>+1 (555) 987-6543</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-info-card reveal reveal-flip stagger-3">
+            <div class="icon"><i class="bi bi-envelope-fill"></i></div>
+            <h6>Email Address</h6>
+            <p>info@suspended.com<br>support@suspended.com</p>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-form reveal reveal-up">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="contactName" placeholder="Your Name">
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control" id="contactEmail" placeholder="Your Email">
+              </div>
+              <div class="col-md-6">
+                <input type="tel" class="form-control" id="contactPhone" placeholder="Phone Number">
+              </div>
+              <div class="col-md-6">
+                <select class="form-control" id="contactSubject">
+                  <option value="" disabled selected>Select Subject</option>
+                  <option>Membership Inquiry</option>
+                  <option>Personal Training</option>
+                  <option>Class Schedule</option>
+                  <option>General Question</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <textarea class="form-control" id="contactMessage" placeholder="Your Message"></textarea>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-hero-primary px-5" onclick="submitContact()">Send Message <i
+                    class="bi bi-send-fill ms-2"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">SUSPENDED</div>
+          <p class="footer-desc">Your ultimate destination for fitness excellence.
+            We provide everything you need to build the best version of yourself.</p>
+          <div class="footer-social mt-3">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-youtube"></i></a>
+            <a href="#"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#trainers">Trainers</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6>Programs</h6>
+          <ul class="footer-links">
+            <li><a href="#">Weight Training</a></li>
+            <li><a href="#">CrossFit</a></li>
+            <li><a href="#">Boxing</a></li>
+            <li><a href="#">Yoga</a></li>
+            <li><a href="#">Cardio</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h6>Working Hours</h6>
+          <ul class="footer-links">
+            <li><a href="#">Monday - Friday: 5:00 AM - 11:00 PM</a></li>
+            <li><a href="#">Saturday: 6:00 AM - 9:00 PM</a></li>
+            <li><a href="#">Sunday: 7:00 AM - 7:00 PM</a></li>
+          </ul>
+          <h6 class="mt-4">Newsletter</h6>
+          <div class="input-group">
+            <input type="email" class="form-control" id="newsletterEmail"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;"
+              placeholder="Your email">
+            <button class="btn btn-join" onclick="submitNewsletter()">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 SUSPENDED Fitness. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== SCROLL TO TOP ===== -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="bi bi-chevron-up"></i>
+  </button>
+
+  <!-- ===== BOOTSTRAP JS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+
+  <!-- ===== CUSTOM JS ===== -->
+  <script>
+    // =============================================
+    // UTILITY: Toast notification
+    // =============================================
+    function showToast(title, message, isError = false) {
+      const toastEl = document.getElementById('appToast');
+      document.getElementById('toastTitle').textContent = title;
+      document.getElementById('toastBody').textContent = message;
+      toastEl.classList.remove('border-danger', 'border-success');
+      toastEl.classList.add(isError ? 'border-danger' : 'border-success');
+      const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+      toast.show();
+    }
+
+    // =============================================
+    // UTILITY: API helper with auth header
+    // =============================================
+    function getAuthHeaders() {
+      const token = localStorage.getItem('gym_token');
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+      return headers;
+    }
+
+    async function apiPost(url, data) {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.message || 'Request failed');
+      return json;
+    }
+
+    async function apiGet(url) {
+      const res = await fetch(url, { headers: getAuthHeaders() });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.message || 'Request failed');
+      return json;
+    }
+
+    // =============================================
+    // AUTH: State management
+    // =============================================
+    function isLoggedIn() {
+      return !!localStorage.getItem('gym_token');
+    }
+
+    function getUser() {
+      const data = localStorage.getItem('gym_user');
+      return data ? JSON.parse(data) : null;
+    }
+
+    function setAuth(token, user) {
+      localStorage.setItem('gym_token', token);
+      localStorage.setItem('gym_user', JSON.stringify(user));
+      updateNavAuth();
+    }
+
+    function clearAuth() {
+      localStorage.removeItem('gym_token');
+      localStorage.removeItem('gym_user');
+      updateNavAuth();
+    }
+
+    function updateNavAuth() {
+      const guestNav = document.getElementById('navAuthGuest');
+      const userNav = document.getElementById('navAuthUser');
+      const userName = document.getElementById('navUserName');
+
+      if (isLoggedIn()) {
+        guestNav.classList.add('d-none');
+        userNav.classList.remove('d-none');
+        const user = getUser();
+        if (user) userName.textContent = user.name.split(' ')[0];
+      } else {
+        guestNav.classList.remove('d-none');
+        userNav.classList.add('d-none');
+      }
+    }
+
+    // =============================================
+    // AUTH: Register
+    // =============================================
+    async function registerUser() {
+      const name = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim();
+      const password = document.getElementById('registerPassword').value;
+      const phone = document.getElementById('registerPhone').value.trim();
+
+      if (!name || !email || !password) {
+        showToast('Error', 'Please fill in name, email, and password', true);
+        return;
+      }
+      if (password.length < 6) {
+        showToast('Error', 'Password must be at least 6 characters', true);
+        return;
+      }
+
+      try {
+        const data = await apiPost('/api/auth/register', { name, email, password, phone });
+        setAuth(data.token, data.user);
+        bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
+        showToast('Welcome!', 'Account created successfully. Welcome, ' + data.user.name + '!');
+      } catch (err) {
+        showToast('Registration Failed', err.message, true);
+      }
+    }
+
+    // =============================================
+    // AUTH: Login
+    // =============================================
+    async function loginUser() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (!email || !password) {
+        showToast('Error', 'Please enter your email and password', true);
+        return;
+      }
+
+      try {
+        const data = await apiPost('/api/auth/login', { email, password });
+        setAuth(data.token, data.user);
+        bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+        showToast('Welcome Back!', 'Logged in as ' + data.user.name);
+      } catch (err) {
+        showToast('Login Failed', err.message, true);
+      }
+    }
+
+    // =============================================
+    // AUTH: Logout
+    // =============================================
+    function logoutUser() {
+      clearAuth();
+      showToast('Logged Out', 'You have been successfully logged out.');
+    }
+
+    // =============================================
+    // AUTH: Modal switchers
+    // =============================================
+    function switchToRegister(e) {
+      e.preventDefault();
+      bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+      setTimeout(() => new bootstrap.Modal(document.getElementById('registerModal')).show(), 300);
+    }
+
+    function switchToLogin(e) {
+      e.preventDefault();
+      bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
+      setTimeout(() => new bootstrap.Modal(document.getElementById('loginModal')).show(), 300);
+    }
+
+    // =============================================
+    // CONTACT FORM
+    // =============================================
+    async function submitContact() {
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const subject = document.getElementById('contactSubject').value;
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        showToast('Error', 'Please fill in all required fields', true);
+        return;
+      }
+
+      try {
+        const data = await apiPost('/api/contact', { name, email, phone, subject, message });
+        showToast('Message Sent!', data.message);
+        document.getElementById('contactName').value = '';
+        document.getElementById('contactEmail').value = '';
+        document.getElementById('contactPhone').value = '';
+        document.getElementById('contactSubject').selectedIndex = 0;
+        document.getElementById('contactMessage').value = '';
+      } catch (err) {
+        showToast('Error', err.message, true);
+      }
+    }
+
+    // =============================================
+    // NEWSLETTER
+    // =============================================
+    async function submitNewsletter() {
+      const email = document.getElementById('newsletterEmail').value.trim();
+
+      if (!email) {
+        showToast('Error', 'Please enter your email address', true);
+        return;
+      }
+
+      try {
+        const data = await apiPost('/api/newsletter', { email });
+        showToast('Subscribed!', data.message);
+        document.getElementById('newsletterEmail').value = '';
+      } catch (err) {
+        showToast('Error', err.message, true);
+      }
+    }
+
+    // =============================================
+    // BMI CALCULATOR (extended)
+    // =============================================
+    async function calculateAndSaveBMI() {
+      const height = parseFloat(document.getElementById('bmiHeight').value);
+      const weight = parseFloat(document.getElementById('bmiWeight').value);
+      const age = parseInt(document.getElementById('bmiAge').value) || null;
+      const gender = document.getElementById('bmiGender').value || '';
+      const resultDiv = document.getElementById('bmiResult');
+      const bmiValueEl = document.getElementById('bmiValue');
+      const bmiCategoryEl = document.getElementById('bmiCategory');
+      const bmiMessageEl = document.getElementById('bmiMessage');
+
+      const heightM = height / 100;
+
+      if (!heightM || !weight || heightM <= 0 || weight <= 0) {
+        showToast('Error', 'Please enter valid height and weight values.', true);
+        return;
+      }
+
+      const bmi = (weight / (heightM * heightM)).toFixed(1);
+      let category = '';
+      let message = '';
+
+      if (bmi < 18.5) {
+        category = 'Underweight';
+        message = 'Consider a nutrition-rich diet and strength training.';
+      } else if (bmi < 25) {
+        category = 'Normal Weight';
+        message = 'Great job! Maintain your healthy lifestyle.';
+      } else if (bmi < 30) {
+        category = 'Overweight';
+        message = 'Regular exercise and balanced diet can help.';
+      } else {
+        category = 'Obese';
+        message = 'Consult a healthcare professional for guidance.';
+      }
+
+      bmiValueEl.textContent = bmi;
+      bmiCategoryEl.textContent = category;
+      bmiMessageEl.textContent = message;
+      resultDiv.style.display = 'block';
+
+      // If logged in, save to database
+      if (isLoggedIn()) {
+        try {
+          await apiPost('/api/bmi', { height, weight, age, gender });
+          showToast('BMI Saved', 'Your BMI has been saved to your profile.');
+        } catch (err) {
+          showToast('Note', 'BMI calculated but could not save: ' + err.message, true);
+        }
+      }
+    }
+
+    // =============================================
+    // MEMBERSHIP PURCHASE
+    // =============================================
+    async function choosePlan(plan) {
+      if (!isLoggedIn()) {
+        showToast('Login Required', 'Please login or register to purchase a membership.', true);
+        new bootstrap.Modal(document.getElementById('loginModal')).show();
+        return;
+      }
+
+      if (!confirm('Confirm enrollment in the ' + plan + ' plan?')) return;
+
+      try {
+        const data = await apiPost('/api/membership', { plan });
+        showToast('Membership Active!', data.message);
+      } catch (err) {
+        showToast('Error', err.message, true);
+      }
+    }
+
+    // =============================================
+    // Navbar scroll effect
+    // =============================================
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      const scrollTop = document.getElementById('scrollTop');
+
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      if (window.scrollY > 500) {
+        scrollTop.classList.add('show');
+      } else {
+        scrollTop.classList.remove('show');
+      }
+    });
+
+    // =============================================
+    // Smooth scroll for nav links
+    // =============================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 80;
+          const position = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: position, behavior: 'smooth' });
+        }
+        // Close mobile nav
+        const navCollapse = document.getElementById('navMenu');
+        if (navCollapse.classList.contains('show')) {
+          new bootstrap.Collapse(navCollapse).hide();
+        }
+      });
+    });
+
+    // =============================================
+    // Active nav link on scroll
+    // =============================================
+    window.addEventListener('scroll', function () {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      let current = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 100;
+        if (window.scrollY >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // =============================================
+    // ON PAGE LOAD: Restore auth state
+    // =============================================
+    document.addEventListener('DOMContentLoaded', function () {
+      updateNavAuth();
+      initScrollReveal();
+      initTiltCards();
+      initCounters();
+      initHeroParallax();
+      initParallaxShapes();
+    });
+
+    // =============================================
+    // 3D SCROLL REVEAL (Intersection Observer)
+    // =============================================
+    function initScrollReveal() {
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+
+    // =============================================
+    // 3D TILT CARD EFFECT (Mouse tracking)
+    // =============================================
+    function initTiltCards() {
+      const cards = document.querySelectorAll('.tilt-card');
+
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = ((y - centerY) / centerY) * -8;
+          const rotateY = ((x - centerX) / centerX) * 8;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1)`;
+
+          // Update shine position
+          const shine = card.querySelector('.tilt-shine');
+          if (shine) {
+            const percentX = (x / rect.width) * 100;
+            const percentY = (y / rect.height) * 100;
+            shine.style.setProperty('--shine-x', percentX + '%');
+            shine.style.setProperty('--shine-y', percentY + '%');
+          }
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+          card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+          setTimeout(() => { card.style.transition = ''; }, 600);
+        });
+
+        card.addEventListener('mouseenter', () => {
+          card.style.transition = 'none';
+        });
+      });
+    }
+
+    // =============================================
+    // ANIMATED NUMBER COUNTERS
+    // =============================================
+    function initCounters() {
+      const counters = document.querySelectorAll('.counter-value');
+      let started = false;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            counters.forEach(counter => {
+              const target = parseInt(counter.getAttribute('data-target'));
+              const duration = 2000;
+              const start = performance.now();
+
+              function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+              }
+
+              function updateCounter(currentTime) {
+                const elapsed = currentTime - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const easedProgress = easeOutCubic(progress);
+                const current = Math.floor(easedProgress * target);
+
+                counter.textContent = current;
+
+                if (progress < 1) {
+                  requestAnimationFrame(updateCounter);
+                } else {
+                  counter.textContent = target;
+                }
+              }
+
+              requestAnimationFrame(updateCounter);
+            });
+          }
+        });
+      }, { threshold: 0.5 });
+
+      const statsSection = document.querySelector('.hero-stats');
+      if (statsSection) observer.observe(statsSection);
+    }
+
+    // =============================================
+    // HERO PARALLAX (Mouse movement)
+    // =============================================
+    function initHeroParallax() {
+      const hero = document.getElementById('hero');
+      const parallaxLayer = document.getElementById('heroParallax');
+
+      if (!hero || !parallaxLayer) return;
+
+      hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+        parallaxLayer.style.transform = `translate3d(${x * 30}px, ${y * 20}px, 0)`;
+
+        // Subtle tilt on hero content
+        const content = hero.querySelector('.hero-content');
+        if (content) {
+          content.style.transform = `translateZ(50px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg)`;
+        }
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        parallaxLayer.style.transform = 'translate3d(0, 0, 0)';
+        parallaxLayer.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+
+        const content = hero.querySelector('.hero-content');
+        if (content) {
+          content.style.transform = 'translateZ(50px) rotateY(0) rotateX(0)';
+          content.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+        }
+
+        setTimeout(() => {
+          parallaxLayer.style.transition = '';
+          if (content) content.style.transition = '';
+        }, 800);
+      });
+    }
+
+    // =============================================
+    // PARALLAX BACKGROUND SHAPES (Scroll-driven)
+    // =============================================
+    function initParallaxShapes() {
+      const shapes = document.querySelectorAll('.parallax-bg-shape');
+
+      if (shapes.length === 0) return;
+
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+
+        shapes.forEach((shape, i) => {
+          const speed = (i % 3 + 1) * 0.03;
+          const rect = shape.parentElement.getBoundingClientRect();
+          const offset = (rect.top * speed);
+
+          shape.style.transform = `translate3d(0, ${offset}px, 0)`;
+        });
+      }, { passive: true });
+    }
+  </script>
+
+</body>
+
+</html>
